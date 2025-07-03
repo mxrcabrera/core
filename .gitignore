@@ -1,0 +1,31 @@
+# Backend
+backend/Core.API/bin/
+backend/Core.API/obj/
+backend/Core.Core/bin/
+backend/Core.Core/obj/
+backend/Core.Data/bin/
+backend/Core.Data/obj/
+backend/Core.Tests/bin/
+backend/Core.Tests/obj/
+backend/.vs/
+backend/packages/
+*.user
+*.suo
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# General
+.DS_Store
+*.log
+.vscode/
+.idea/
