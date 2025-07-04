@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core.Core\Core.Core.csproj" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 
 </Project>

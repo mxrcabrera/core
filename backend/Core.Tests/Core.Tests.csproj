@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -20,12 +20,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.API\Core.API.csproj" />
-    <ProjectReference Include="..\Core.Core\Core.Core.csproj" />
-    <ProjectReference Include="..\Core.Data\Core.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationsTest\" />
+    <Folder Include="UnitTest\" />
   </ItemGroup>
 
 </Project>
