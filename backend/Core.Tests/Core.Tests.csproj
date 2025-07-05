@@ -20,8 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.API\Core.API.csproj" />
-    <ProjectReference Include="..\Core.Core\Core.Core.csproj" />
-    <ProjectReference Include="..\Core.Data\Core.Data.csproj" />
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\Core.Infrastructure\Core.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

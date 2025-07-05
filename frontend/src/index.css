@@ -1,13 +1,299 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  --galaxy-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #b06ab3 100%);
+  --bg-dark: #000000;
+  --bg-dark-secondary: #0a0a0f;
+  --border-dark: #1a1a2e;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --accent-purple: #667eea;
+  --accent-purple-hover: #5a67d8;
+  --accent-violet: #764ba2;
+  --accent-lilac: #b06ab3;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ===== COMPONENTES BASE ===== */
+@layer components {
+  
+  /* CONTAINERS */
+  .container-full {
+    @apply min-h-screen bg-black flex items-center justify-center p-8;
+  }
+  
+  .container-split {
+    @apply flex w-full max-w-6xl;
+  }
+  
+  .container-side {
+    @apply flex-1 flex items-center justify-center;
+  }
+
+  /* DASHBOARD CONTAINERS */
+  .dashboard-container {
+    @apply min-h-screen bg-black;
+  }
+
+  .dashboard-header {
+    @apply bg-gray-900 border-b border-gray-800;
+  }
+
+  .dashboard-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+  
+  /* LOGO GALAXIA */
+  .logo-container {
+    @apply text-center;
+  }
+  
+  .logo-galaxy {
+    @apply w-32 h-32 mx-auto mb-6 relative;
+  }
+  
+  .logo-galaxy-mini {
+    @apply w-8 h-8 relative flex items-center justify-center;
+  }
+  
+  .galaxy-orb {
+    @apply w-full h-full rounded-full relative overflow-hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #b06ab3 100%);
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+  }
+  
+  .galaxy-orb::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%);
+  }
+  
+  .galaxy-network {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
+  
+  .logo-title {
+    @apply text-5xl font-bold text-white mb-4;
+  }
+  
+  .logo-subtitle {
+    @apply text-gray-400 text-lg;
+  }
+
+  /* KANBAN CARDS */
+  .kanban-board {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+  }
+
+  .kanban-column {
+    @apply bg-gray-900 rounded-lg p-6 border border-gray-800;
+  }
+
+  .kanban-column-header {
+    @apply flex items-center justify-between mb-4 pb-3 border-b border-gray-700;
+  }
+
+  .kanban-column-title {
+    @apply text-lg font-semibold text-white;
+  }
+
+  .kanban-column-count {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+
+  .kanban-card {
+    @apply bg-gray-800 rounded-lg p-4 mb-3 border border-gray-700 hover:border-purple-500 transition-colors cursor-pointer;
+  }
+
+  .kanban-card-priority-high {
+    @apply border-l-4 border-l-red-500;
+  }
+
+  .kanban-card-priority-medium {
+    @apply border-l-4 border-l-yellow-500;
+  }
+
+  .kanban-card-priority-low {
+    @apply border-l-4 border-l-green-500;
+  }
+  
+  /* FORMS */
+  .form-container {
+    @apply w-full max-w-md;
+  }
+  
+  .form-group {
+    @apply mb-6;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-400 mb-2;
+  }
+  
+  .form-input {
+    @apply block w-full pl-12 pr-4 py-4 border border-gray-800 rounded-lg bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+  }
+  
+  .form-input-icon {
+    @apply absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none;
+  }
+  
+  .form-input-icon svg {
+    @apply h-5 w-5 text-gray-500;
+  }
+  
+  .form-input-wrapper {
+    @apply relative;
+  }
+  
+  /* BUTTONS */
+  .btn-primary {
+    @apply w-full py-4 px-4 text-white font-medium rounded-lg transition-colors duration-200;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+  
+  .btn-primary:disabled {
+    @apply bg-gray-600 cursor-not-allowed;
+  }
+  
+  .btn-social {
+    @apply w-full flex items-center justify-center px-6 py-4 border border-gray-800 rounded-lg bg-black hover:bg-gray-900 transition-all duration-200;
+  }
+  
+  .btn-social-icon {
+    @apply w-5 h-5 mr-3;
+  }
+  
+  .btn-social-text {
+    @apply text-white font-medium;
+  }
+  
+  .btn-link {
+    @apply text-purple-400 hover:text-purple-300 font-medium;
+  }
+  
+  .btn-link-secondary {
+    @apply text-sm text-purple-400 hover:text-purple-300;
+  }
+
+  .btn-galaxy {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 text-white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .btn-galaxy:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  
+  /* ALERTS */
+  .alert-error {
+    @apply mb-6 p-4 bg-red-900 border border-red-700 rounded-lg;
+  }
+  
+  .alert-error-text {
+    @apply text-red-300 text-sm;
+  }
+  
+  .alert-success {
+    @apply mb-6 p-4 bg-green-900 border border-green-700 rounded-lg;
+  }
+  
+  .alert-success-text {
+    @apply text-green-300 text-sm;
+  }
+  
+  /* DIVIDERS */
+  .divider {
+    @apply relative mb-8;
+  }
+  
+  .divider-line {
+    @apply absolute inset-0 flex items-center;
+  }
+  
+  .divider-border {
+    @apply w-full border-t border-gray-800;
+  }
+  
+  .divider-text {
+    @apply relative flex justify-center text-sm;
+  }
+  
+  .divider-text span {
+    @apply px-4 bg-black text-gray-400;
+  }
+  
+  /* CHECKBOXES */
+  .checkbox-wrapper {
+    @apply flex items-center justify-between mb-8;
+  }
+  
+  .checkbox-group {
+    @apply flex items-center;
+  }
+  
+  .checkbox-input {
+    @apply h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-800 rounded bg-black;
+  }
+  
+  .checkbox-label {
+    @apply ml-2 block text-sm text-gray-400;
+  }
+  
+  /* LOADING STATES */
+  .loading-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-32 w-32 border-b-2 border-purple-600;
+  }
+  
+  /* SPACING */
+  .section-spacing {
+    @apply space-y-4 mb-8;
+  }
+  
+  .text-spacing {
+    @apply mb-6;
+  }
+  
+  .center-text {
+    @apply text-center;
+  }
+  
+  /* RESPONSIVE TEXT */
+  .text-responsive {
+    @apply text-gray-400;
+  }
+  
+  .text-responsive span {
+    @apply text-gray-400;
+  }
+}
+
+/* ===== UTILITIES PERSONALIZADAS ===== */
+@layer utilities {
+  .bg-gradient-galaxy {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #b06ab3 100%);
+  }
+  
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #667eea, #b06ab3) 1;
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
 }
