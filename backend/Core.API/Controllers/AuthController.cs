@@ -36,7 +36,7 @@ namespace Core.API.Controllers
                 {
                     return BadRequest(new { message = "Email o contraseña incorrectos" });
                 }
-                 
+
                 var token = GenerateJwtToken(user);
 
                 return Ok(new
